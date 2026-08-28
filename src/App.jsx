@@ -23,15 +23,18 @@ const App = () => {
 
   console.log(members);
   return (
-    <div className="bg-zinc-200">
-      {/* <Navbar /> */}
+    <div className="container mx-auto p-6 text-center bg-zinc-200">
+      {/* navbar  */}
+      <nav className="flex gap-6 text-lg text-center">
+        <button onClick={() => setView("home")}>Home</button>
+        <button onClick={() => setView("owner")}>Owner</button>
+      </nav>
 
-      <button onClick={() => setView("home")}>Home</button>
-
-      {view === "home" && <h1>Generation Thailand React - Assessment</h1>}
+      <h1>Generation Thailand</h1>
+      {view === "home" && <h1>React - Assessment</h1>}
       {view === "user" && <UserView members={members} />}
       {view === "admin" && <AdminView members={members} />}
-      <div className="flex gap-10">
+      <div className="flex justify-center gap-10 ">
         <div className="bg-white rounded-md ">
           <button onClick={() => setView("user")}>User Home Section</button>
         </div>

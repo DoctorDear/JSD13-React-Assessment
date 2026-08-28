@@ -7,7 +7,7 @@ const Table = ({ members, deleteMember }) => {
             <th>Name</th>
             <th>Last Name</th>
             <th>Position</th>
-            <th>Action</th>
+            {deleteMember && <th>Action</th>}
           </tr>
         </thead>
         <tbody>
@@ -16,14 +16,16 @@ const Table = ({ members, deleteMember }) => {
               <td>{mem.name}</td>
               <td>{mem.lastname}</td>
               <td>{mem.position}</td>
-              <td>
-                <button
-                  className="btn bg-red-700 text-white"
-                  onClick={() => deleteMember(mem.id)}
-                >
-                  Delete
-                </button>
-              </td>
+              {deleteMember && (
+                <td>
+                  <button
+                    className="btn bg-red-700 text-white"
+                    onClick={() => deleteMember(mem.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

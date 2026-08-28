@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Table from "./Table";
 
-const AdminView = ({ members, createMember, deleteMember }) => {
+const AdminView = ({ members, createMember, deleteMember, updateMember }) => {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [position, setPosition] = useState("");
@@ -19,11 +19,9 @@ const AdminView = ({ members, createMember, deleteMember }) => {
     setPosition("");
   };
   return (
-    <div>
-      <div>
-        <div className="font-bold">
-          <h1>Create User Here</h1>
-        </div>
+    <div className="flex flex-col gap-8 my-6">
+      <div className="flex flex-col items-start w-fit mx-auto gap-3">
+        <h2 className="font-bold text-lg text-black">Create User Here</h2>
         <form onSubmit={handleSubmit} className="flex justify-center gap-4">
           <input
             className="input validator"
@@ -46,12 +44,16 @@ const AdminView = ({ members, createMember, deleteMember }) => {
             onChange={(e) => setPosition(e.target.value)}
             className="input validator"
           />
-          <button type="submit" className="btn bg-blue-500 text-white mt-4">
+          <button type="submit" className="btn bg-blue-500 text-white ">
             Create
           </button>
         </form>
       </div>
-      <Table members={members} deleteMember={deleteMember} />
+      <Table
+        members={members}
+        deleteMember={deleteMember}
+        updateMember={updateMember}
+      />
     </div>
   );
 };

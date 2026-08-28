@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import UserView from "./components/UserView";
 import AdminView from "./components/AdminView";
 const App = () => {
@@ -55,11 +55,7 @@ const App = () => {
   return (
     <div className="container mx-auto p-6 text-center bg-zinc-200">
       {/* navbar  */}
-      <nav className="flex justify-end gap-6 text-lg text-center font-bold border-b-zinc-700">
-        <button onClick={() => setView("home")}>Home</button>
-        <button onClick={() => setView("owner")}>Owner</button>
-      </nav>
-
+      <Navbar setView={setView} />
       {view !== "owner" && (
         <div className="text-3xl font-bold">
           <h1>Generation Thailand</h1>

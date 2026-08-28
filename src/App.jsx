@@ -31,10 +31,12 @@ const App = () => {
       </nav>
 
       <h1>Generation Thailand</h1>
+
       {view === "home" && <h1>React - Assessment</h1>}
-      {view === "user" && <UserView members={members} />}
-      {view === "admin" && <AdminView members={members} />}
-      <div className="flex justify-center gap-10 ">
+      {view === "user" && <h1>Home - User Section</h1>}
+      {view === "admin" && <h1>Home - Admin Section</h1>}
+
+      <div className="flex justify-center gap-10 m-8">
         <div className="bg-white rounded-md ">
           <button onClick={() => setView("user")}>User Home Section</button>
         </div>
@@ -42,6 +44,9 @@ const App = () => {
           <button onClick={() => setView("admin")}>Admin Home Section</button>
         </div>
       </div>
+
+      {view === "user" && <UserView members={members} />}
+      {view === "admin" && <AdminView members={members} />}
     </div>
   );
 };

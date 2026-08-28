@@ -71,9 +71,8 @@ const App = () => {
 
   return (
     <div className="min-h-screen w-full bg-zinc-200">
+      <Navbar setView={setView} />
       <div className="container mx-auto p-6 text-center">
-        {/* navbar  */}
-        <Navbar setView={setView} />
         {view !== "owner" && (
           <div className="text-3xl font-bold">
             <h1>Generation Thailand</h1>

@@ -38,7 +38,20 @@ const App = () => {
     }
   };
 
-  console.log(members);
+  const deleteMember = async (id) => {
+    try {
+      const response = await fetch(
+        `https://6a904f6cff2484963a5df376.mockapi.io/api/v1/members/${id}`,
+        {
+          method: "DELETE",
+        },
+      );
+      setMembers(members.filter((mem) => mem.id !== id));
+    } catch (error) {
+      console.error("Error removing member", error);
+    }
+  };
+
   return (
     <div className="container mx-auto p-6 text-center bg-zinc-200">
       {/* navbar  */}
@@ -54,10 +67,10 @@ const App = () => {
 
       {view !== "owner" && (
         <div className="flex justify-center gap-10 m-8">
-          <div className="bg-white rounded-md ">
+          <div className="btn">
             <button onClick={() => setView("user")}>User Home Section</button>
           </div>
-          <div className="bg-white rounded-md ">
+          <div className="btn">
             <button onClick={() => setView("admin")}>Admin Home Section</button>
           </div>
         </div>
@@ -65,7 +78,11 @@ const App = () => {
 
       {view === "user" && <UserView members={members} />}
       {view === "admin" && (
-        <AdminView members={members} createMember={createMember} />
+        <AdminView
+          members={members}
+          createMember={createMember}
+          deleteMember={deleteMember}
+        />
       )}
     </div>
   );

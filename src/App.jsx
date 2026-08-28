@@ -55,15 +55,31 @@ const App = () => {
   return (
     <div className="container mx-auto p-6 text-center bg-zinc-200">
       {/* navbar  */}
-      <nav className="flex gap-6 text-lg text-center">
+      <nav className="flex justify-end gap-6 text-lg text-center font-bold border-b-zinc-700">
         <button onClick={() => setView("home")}>Home</button>
         <button onClick={() => setView("owner")}>Owner</button>
       </nav>
 
-      {view !== "owner" && <h1>Generation Thailand</h1>}
-      {view === "home" && <h1>React - Assessment</h1>}
-      {view === "user" && <h1>Home - User Section</h1>}
-      {view === "admin" && <h1>Home - Admin Section</h1>}
+      {view !== "owner" && (
+        <div className="text-3xl font-bold">
+          <h1>Generation Thailand</h1>
+        </div>
+      )}
+      {view === "home" && (
+        <div className="text-2xl font-medium">
+          <h1>React - Assessment</h1>
+        </div>
+      )}
+      {view === "user" && (
+        <div className="text-2xl font-medium">
+          <h1>Home - User Section</h1>
+        </div>
+      )}
+      {view === "admin" && (
+        <div className="text-2xl font-medium">
+          <h1>Home - Admin Section</h1>
+        </div>
+      )}
 
       {view !== "owner" && (
         <div className="flex justify-center gap-10 m-8">
@@ -72,6 +88,27 @@ const App = () => {
           </div>
           <div className="btn">
             <button onClick={() => setView("admin")}>Admin Home Section</button>
+          </div>
+        </div>
+      )}
+      {view === "owner" && (
+        <div className="flex flex-col gap-6">
+          <h1 className="font-bold text-3xl">
+            11 Chirasak Tapphae (เดียร์) - JSD13
+          </h1>
+          <div className="avatar">
+            <div className="w-60 rounded">
+              <img alt="Owner-Profile-Picture" src="src\assets\Owner-pic.jpg" />
+            </div>
+          </div>
+          <div>
+            <h2 className="font-bold mt-3">Short Biography:</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
+              laboriosam magni nemo quam nostrum atque, molestiae, ut corrupti
+              ducimus corporis ab nobis nesciunt? Esse placeat maxime
+              dignissimos molestias consequatur fugiat.
+            </p>
           </div>
         </div>
       )}

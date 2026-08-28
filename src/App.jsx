@@ -21,6 +21,23 @@ const App = () => {
     fetchMembers();
   }, []);
 
+  const createMember = async (newMember) => {
+    try {
+      const response = await fetch(
+        "https://6a904f6cff2484963a5df376.mockapi.io/api/v1/members",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newMember),
+        },
+      );
+      const data = await response.json();
+      setMembers([...members, data]);
+    } catch (error) {
+      console.error("Error creating member", error);
+    }
+  };
+
   console.log(members);
   return (
     <div className="container mx-auto p-6 text-center bg-zinc-200">
@@ -47,7 +64,9 @@ const App = () => {
       )}
 
       {view === "user" && <UserView members={members} />}
-      {view === "admin" && <AdminView members={members} />}
+      {view === "admin" && (
+        <AdminView members={members} createMember={createMember} />
+      )}
     </div>
   );
 };
